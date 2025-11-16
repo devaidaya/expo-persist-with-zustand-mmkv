@@ -11,13 +11,19 @@ const formatTime = (timestamp: number) =>
 
 type TaskItemProps = {
 	item: Task;
+	toggleTask: () => void;
+	deleteTask: () => void;
 };
 
-export default function TaskItem({ item }: TaskItemProps) {
+export default function TaskItem({
+	item,
+	deleteTask,
+	toggleTask,
+}: TaskItemProps) {
 	return (
 		<View style={styles.taskCard}>
 			<TouchableOpacity
-				onPress={undefined}
+				onPress={toggleTask}
 				style={[styles.checkbox, item.completed && styles.checkboxCompleted]}
 				activeOpacity={0.8}>
 				{item.completed && (
@@ -38,7 +44,7 @@ export default function TaskItem({ item }: TaskItemProps) {
 				</Text>
 			</View>
 			<TouchableOpacity
-				onPress={undefined}
+				onPress={deleteTask}
 				hitSlop={10}>
 				<Feather
 					name="trash-2"

@@ -1,5 +1,3 @@
-import { randomUUID } from 'expo-crypto';
-
 export type Task = {
 	id: string;
 	title: string;
@@ -13,5 +11,3 @@ type TodoState = {
 	toggleTask: (id: string) => void;
 	deleteTask: (id: string) => void;
 };
-
-const id = randomUUID();
