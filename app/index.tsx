@@ -14,7 +14,15 @@ import InputTodo from '@/components/InputTodo';
 import TaskItem from '@/components/TaskItem';
 
 export default function HomeScreen() {
-	console.log('Rendered HomeScreen');
+	const handleDeleteTask = (taskId: string) => {
+		// TODO: connect to Zustand store
+		console.log('delete task (pending implementation):', taskId);
+	};
+
+	const handleToggleTask = (taskId: string) => {
+		// TODO: connect to Zustand store
+		console.log('toggle task (pending implementation):', taskId);
+	};
 
 	return (
 		<SafeAreaView style={styles.safeArea}>
@@ -33,7 +41,13 @@ export default function HomeScreen() {
 					keyExtractor={(item) => item.id}
 					contentContainerStyle={styles.listContent}
 					ItemSeparatorComponent={() => <View style={styles.separator} />}
-					renderItem={({ item }) => <TaskItem item={item} />}
+					renderItem={({ item }) => (
+						<TaskItem
+							item={item}
+							deleteTask={() => handleDeleteTask(item.id)}
+							toggleTask={() => handleToggleTask(item.id)}
+						/>
+					)}
 					ListEmptyComponent={
 						<View style={styles.emptyState}>
 							<Feather
